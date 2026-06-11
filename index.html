@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Kumpulan Doa Sehari-hari | Tahlilan & Zikir</title>
+    <!-- Google Fonts: Font Modern untuk Latin & Font Klasik untuk Arab -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefaf5;
+            /* Warna hangat lembut seperti kertas mushaf */
+            color: #2c2418;
+            line-height: 1.5;
+        }
+
+        /* Background Pattern Halus */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(#e8dccc 1.2px, transparent 1.2px);
+            background-size: 28px 28px;
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header Islami */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 2rem 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(14, 66, 41, 0.05) 0%, rgba(212, 175, 55, 0.08) 100%);
+            border-radius: 48px;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #2c5a2e;
+            letter-spacing: -0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero h1 i {
+            color: #d4af37;
+            font-size: 2rem;
+        }
+
+        .arabic-script {
+            font-family: 'Amiri', 'Traditional Arabic', 'Times New Roman', serif;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            font-weight: 500;
+            direction: rtl;
+            color: #1e3a2f;
+        }
+
+        .subhead {
+            margin-top: 0.8rem;
+            color: #6b4e2e;
+            font-weight: 500;
+            border-top: 1px dashed #e2d5b6;
+            display: inline-block;
+            padding-top: 0.7rem;
+            font-size: 0.95rem;
+        }
+
+        /* Search Bar */
+        .search-wrapper {
+            margin: 2rem 0 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 60px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            padding: 0.2rem 0.2rem 0.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 550px;
+            border: 1px solid #f0e5d2;
+            transition: all 0.2s;
+        }
+
+        .search-box:focus-within {
+            border-color: #d4af37;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .search-box i {
+            color: #b48c3c;
+            font-size: 1.2rem;
+        }
+
+        .search-box input {
+            border: none;
+            flex: 1;
+            padding: 1rem 0.8rem;
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+            font-weight: 500;
+            color: #2c2418;
+        }
+
+        .search-box input::placeholder {
+            color: #bcac8a;
+            font-weight: normal;
+        }
+
+        .search-box button {
+            background: #2c5a2e;
+            border: none;
+            color: white;
+            padding: 0.7rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .search-box button:hover {
+            background: #1f4521;
+        }
+
+        /* Counter & Info */
+        .info-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e9e0d0;
+        }
+
+        .badge-count {
+            background: #2c5a2e10;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2c5a2e;
+        }
+
+        .badge-count span {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-right: 4px;
+        }
+
+        /* Grid Doa */
+        .doa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.8rem;
+        }
+
+        /* Card Design */
+        .doa-card {
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #f4ebdd;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doa-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(44, 90, 46, 0.12);
+            border-color: #ecd9a8;
+        }
+
+        .card-header {
+            background: #fef9ef;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #f1e8da;
+        }
+
+        .doa-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #3c2a1f;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .doa-number {
+            background: #d4af3722;
+            border-radius: 40px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #936e2c;
+        }
+
+        .card-body {
+            padding: 1.4rem 1.5rem 1rem;
+            flex: 1;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', 'Times New Roman', serif;
+            font-size: 1.7rem;
+            line-height: 1.5;
+            text-align: right;
+            direction: rtl;
+            color: #1f3d30;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            word-break: break-word;
+        }
+
+        .latin-text {
+            font-size: 0.9rem;
+            color: #6b5a44;
+            font-style: italic;
+            background: #faf7f0;
+            padding: 0.6rem 0.9rem;
+            border-radius: 16px;
+            margin: 0.8rem 0;
+            border-left: 3px solid #d4af37;
+        }
+
+        .translation {
+            font-size: 0.92rem;
+            color: #3c3428;
+            margin: 0.8rem 0 1.2rem;
+            line-height: 1.5;
+            border-top: 1px dashed #ede3d2;
+            padding-top: 0.8rem;
+        }
+
+        .card-actions {
+            padding: 0.2rem 1.5rem 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-copy {
+            background: none;
+            border: 1px solid #e0cfb5;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #7a6233;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-copy i {
+            font-size: 0.85rem;
+        }
+
+        .btn-copy:hover {
+            background: #2c5a2e;
+            border-color: #2c5a2e;
+            color: white;
+        }
+
+        /* Toast Notif */
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: #1f3d30;
+            color: #f9efdb;
+            padding: 0.7rem 1.6rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            pointer-events: none;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+
+        .toast-msg.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e9dfcf;
+            color: #aa987a;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1rem 1rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .doa-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .arabic-text {
+                font-size: 1.4rem;
+            }
+
+            .search-box button {
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        /* styling tambahan */
+        .empty-message {
+            text-align: center;
+            padding: 3rem;
+            background: #fdf9f2;
+            border-radius: 48px;
+            color: #a68b5c;
+        }
+    </style>
+</head>
+<body>
+<div class="bg-pattern"></div>
+<div class="container">
+    <div class="hero">
+        <h1>
+            <i class="fas fa-praying-hands"></i> 
+            Kumpulan Doa Sehari-hari
+            <i class="fas fa-star-and-crescent"></i>
+        </h1>
+        <div class="subhead">
+            <i class="fas fa-leaf"></i> Tahlilan & Zikir | 53 Doa Pilihan
+        </div>
+    </div>
+
+    <div class="search-wrapper">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Cari doa... (nama, arab, atau artinya)" autocomplete="off">
+            <button id="searchBtn"><i class="fas fa-filter"></i> Cari</button>
+        </div>
+    </div>
+
+    <div class="info-stats">
+        <div class="badge-count"><i class="fas fa-book-quran"></i> <span id="totalCount">53</span> Doa Harian</div>
+        <div class="badge-count"><i class="fas fa-heart"></i> Semoga Bermanfaat</div>
+    </div>
+
+    <div id="doaContainer" class="doa-grid">
+        <!-- card akan di generate via JS -->
+    </div>
+
+    <footer>
+        <i class="fas fa-dove"></i> "Berdoalah kepada-Ku, niscaya akan Kuperkenankan bagimu" (QS. Ghafir: 60)
+    </footer>
+</div>
+<div id="toastMsg" class="toast-msg">📋 Doa disalin ke clipboard</div>
+
+<script>
+    // ============================================================
+    // DATA DOA - lengkap 53 doa berdasarkan teks yang diberikan
+    // Silahkan edit teks arab / terjemahan sesuai kebutuhan anda
+    // ============================================================
+    const doaList = [
+        { id: 1, title: "Do'a Sebelum Tidur", arabic: "بِسْمِكَ اللهُمَّ أَحْيَ وَ بِسْمِكَ أَمُوتُ", translation: "Dengan menyebut nama-Mu Ya Allah Subhanahu Wa Ta'ala aku hidup dan dengan menyebut nama-Mu aku mati." },
+        { id: 2, title: "Do'a Bangun Tidur", arabic: "الْحَمْدُ لِلهِ الَّذِي اَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَ إِلَيْهِ النَّشُورِ", translation: "Segala puji bagi Allah Subhanahu wa Ta'ala yang telah menghidupkan kami setelah mematikan kami dan kepada-Nya tempat kembali." },
+        { id: 3, title: "Do'a Memakai Baju", arabic: "الْحَمْدُ لِلهِ الَّذِي كَسَانِى هَذَا الثَّوبَ وَرَزَقَنِيْهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ", translation: "Segala puji bagi Allah Subhanahu wa Ta'ala yang telah memakaikan kepadaku (baju) ini dan menjadikan sebagai rizki bagiku." },
+        { id: 4, title: "Do'a Masuk WC", arabic: "اللهُمَّ أِنِّي أَعُوذُبِكَ مِنَ الْخُبُثِ وَالخَبَائِثِ", translation: "Ya Allah sesungguhnya aku berlindung kepada-Mu dari setan laki-laki dan perempuan." },
+        { id: 5, title: "Do'a Keluar WC", arabic: "غُفْرَانَكَ", translation: "Ku harapkan ampunan-Mu." },
+        { id: 6, title: "Do'a Sebelum Wudhu", arabic: "بِسْمِ اللهِ الرَّحْمَانِ الرَّحِيمِ", translation: "Dengan menyebut nama Allah Subhanahu wa Ta'ala yang Maha Pengasih lagi Maha Penyayang." },
+        { id: 7, title: "Do'a Setelah Wudhu", arabic: "أَشْهدُ أَنْ لَا إِلٰهَ اِلَّا الله وَحْدَهُ لَا شَرِيْكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولَهُ", translation: "Aku bersaksi bahwa tidak ada tuhan selain Allah Subhanahu wa Ta'ala, satu-satunya tiada sekutu baginya dan aku bersaksi bahwa Muhammad Sallahu Alaihi Wassallam sebagai hamba-Nya dan utusan-Nya." },
+        { id: 8, title: "Do'a Masuk Masjid", arabic: "اللهُمَّ افْتَحْلِى أَبْوَابَ رَحْمَتِكَ", translation: "Ya Allah Subhanahu Wa Ta'ala bukakanlah pintu-pintu rahmat-Mu." },
+        { id: 9, title: "Do'a Keluar Masjid", arabic: "الَّلهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ", translation: "Ya Allah Subhanahu wa Ta'ala aku memohon kepada-Mu dari keutamaan-Mu." },
+        { id: 10, title: "Do'a Masuk Rumah", arabic: "بِسْمِ اللهِ وَلَجْنَا وَ بِسْمِ اللَّهِ خَرَجْنَا وَ عَلَى اللَّهِ تَوَكَّلْنَا", translation: "Dengan menyebut nama Allah Subhanahu Wa Ta'ala kami masuk kedalam rumah dan dengan menyebut nama-Mu pula kami keluar. Dan hanya kepada-Mu kami bertawakal." },
+        { id: 11, title: "Do'a Keluar Rumah", arabic: "بِسْمِ اللهِ تَوَكَّلْتُ عَلَى الله لَا حَولَ وَلَا قُّوَةَ اِلَّا بِاللهِ", translation: "Dengan menyebut nama Allah Subhanahu Wa Ta'ala aku bertawakal, tiada daya upaya dan kekuatan kecuali milik-Mu." },
+        { id: 12, title: "Do'a Naik Kendaraan", arabic: "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِيْنَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ", translation: "Maha suci Allah Subhanahu wa Ta'ala yang telah menundukan bagi kami kendaraan ini, dan kami tidak akan mampu menguasainya, dan sesungguhnya kami akan kembali kepada Tuhan kami." },
+        { id: 13, title: "Do'a Memakai Baju Baru", arabic: "اِلْبَسْ جَدِيدًا وَ عِشْ حَمِيدًا وَمُتْ شَهِيدًا", translation: "Pakailah baju baru, hiduplah dengan terpuji dan matilah dengan syahid." },
+        { id: 14, title: "Do'a Ziarah Kubur", arabic: "السَّلَامُ عَلَيْكُمْ يَا أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ وَإِنَّا إِنْ شَاءَ اللهُ لَلَاحِقُونَ أَسْأَلُ اللهَ لَنَا وَ لَكُمُ الْعَافِيَةَ", translation: "Semoga keselamatan bagi-Mu 'Ahlu Diyar' dari golongan orang-orang mu'min dan mu'minat sesungguhnya kami akan segera menyusul jika Allah Subhanahu Wa Ta'ala menghendaki. Ku mohon kepada-Nya kesejahteraan bagi kami dan juga kamu." },
+        { id: 15, title: "Do'a Ketika Ada Angin", arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا وَخَيْرَ مَا فِيْهَا وَخَيْرَ مَا اُرْسِلْتَ بِهِ، وَأَعُوْذُ بِكَ مِنْ شَرِّهَا وَشَرِّ مَا فِيْهَا وَشَرِّ مَا أُرْسِلَتْ بِهِ.", translation: "Ya Allah! Sesungguhnya aku mohon kepada-Mu kebaikan angin (ribut ini), kebaikan apa yang di dalamnya dan kebaikan tujuan angin dihembuskan. Aku berlindung kepada-Mu dari kejahatan angin ini, kejahatan apa yang di dalamnya dan kejahatan tujuan angin dihembuskan." },
+        { id: 16, title: "Do'a Ketika Hujan", arabic: "اللهُمَّ صَيِّبًا نَافِعًا", translation: "Ya Allah jadikanlah segala yang Engkau turunkan ini bermanfaat." },
+        { id: 17, title: "Do'a Sebelum Makan", arabic: "اللهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ", translation: "Ya Allah Subhanahu Wa Ta'ala berkahilah setiap apa yang engkau rizkikan pada kami dari api neraka." },
+        { id: 18, title: "Do'a Setelah Makan", arabic: "الْحَمْدُ لِلهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلْنَا مِنَ الْمُسْلِمِينَ", translation: "Segala puji bagi Allah Subhanahu Wa Ta'ala yang telah memberi kami makan dan menyenangkan kami serta menjadikan kami dari golongan orang-orang muslim." },
+        { id: 19, title: "Do'a Kepada Orang Yang Memberi Makan", arabic: "اللَّهُمَّ بَارِكْ لَهُمْ فِيمَا رَزَقْتَهُمْ وَ اغْفِرْ لَهُمْ وَارْحَمْهُمْ", translation: "Ya Allah Subhanahu Wa Ta'ala berkahilah kepadanya setiap apa yang engkau rizkikan dan ampunilah dia dan sayangilah dia." },
+        { id: 20, title: "Do'a Bagi Orang Yang Menikah", arabic: "بَارَكَ اللهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ", translation: "Keberkahan Allah Subhanahu Wa Ta'ala bagimu dan Keberkahan Allah Subhanahu Wa Ta'ala atas mu, semoga Allah Subhanahu Wa Ta'ala mengumpulkan keduanya dalam kebaikan." },
+        { id: 21, title: "Do'a Kaffarotul Majlis", arabic: "سُبْحَانَكَ اللهُمَّ وَبِحَمْدِكَ أَشْهَدُ أَنْ لَا إِلٰهِ إلَّا أَنْتَ أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ", translation: "Maha suci bagi-Mu Allah Subhanahu Wa Ta'ala dan bagi-Mu lah segala puji. Aku bersaksi bahwa tidak ada tuhan selain engkau. Ku mohon ampunan-Mu dan aku bertaubat kepada-Mu." },
+        { id: 22, title: "Do'a Ketika Mendengar Petir", arabic: "سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ وَمَلَائِكَتُهُ مِنْ خِيْفَتِهِ", translation: "Maha suci Allah Subhanahu Wa Ta'ala yang mana petirpun bertasbih kepada-Nya dengan puja-pujinya. Demikian juga para malaikat takut kepada-Nya." },
+        { id: 23, title: "Do'a Takut Akan Suatu Kaum", arabic: "اللهُمَّ أكْفِيْنِهِمْ بِمَا شِئْتَ", translation: "Ya Allah Subhanahu Wa Ta'ala cukupkan dariku (pertolongan-Mu) menghadapi mereka dengan cara yang engkau kehendaki." },
+        { id: 24, title: "Do'a Berta'ziyah", arabic: "أَعْظَمَ اللهُ أَجْرَكَ وَ أَحْسَنَ عَزَاءَكَ وَغَفَرَ لِمَيِّتِكَ", translation: "Semoga Allah Subhanahu Wa Ta'ala memperbanyak pahalamu, menimbulkan kegembiraan pada hatimu dan mengampuni dosa orang yang meninggalkanmu." },
+        { id: 25, title: "Do'a Ketika Hujan Reda", arabic: "مُطِرْنَا بِفَضْلِ اللهِ وَرَحْمَتِهِ", translation: "Dicurahkan kepada kita dengan anugerah Allah Subhanahu Wa Ta'ala dan rahmat-Nya." },
+        { id: 26, title: "Do'a Takut Syirik", arabic: "اللهُمَّ إِنِّي أَعُوذُبِكَ أَنْ أُشْرِكَ بِكَ وَأَنَا أَعْلَمُ وَأَسْتَغْفِرُكَ لِمَا لَا أَعْلَمُ", translation: "Ya Allah Subhanahu Wa Ta'ala sesungguhnya aku berlindung kepada-Mu dari perbuatan Syirik dari apa yang telah aku ketahui dan aku mohon ampunan-Mu dari apa-apa yang tidak aku ketahui." },
+        { id: 27, title: "Do'a Ketika Marah", arabic: "أَعُوذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ", translation: "Aku berlindung kepada Allah Subhanahu Wa Ta'ala dari godaan setan yang terkutuk." },
+        { id: 28, title: "Jawaban 'Semoga Allah Memberkatimu'", arabic: "وَفِيْكَ بَرَكَ الله", translation: "Semoga Allah Subhanahu Wa Ta'ala juga memberkatimu." },
+        { id: 29, title: "Do'a Ketika Dipuji Orang", arabic: "اللهُمَّ لَا تُؤَاخِذْنِى بِمَايَقُوْلُوْنَ وَغْفِرْلِي مَالَايَعْلَمُونَ وَاجْعَلْنِي خَيْرًامِمَّايَظُنُّوْنَ", translation: "Ya Allah Subhanahu Wa Ta'ala janganlah engkau azab diriku karena apa yang mereka ucapkan dan ampunilah dosa-dosaku yang tidak mereka ketahui, dan jadikanlah aku lebih baik dari apa yang mereka perkirakan." },
+        { id: 30, title: "Do'a Memasuki Kampung / Negara", arabic: "اللهُمَّ رَبَّ السَّمَاوَاتِ السَّبْعِ ومَا أَظْلَلْنَ وَرَبَّ الْأَرَضِيْنَ السَّبْعِ وَمَا أَقْلَلْنَ وَرَبَّ الشَّيَاطِيْنَ وَمَا أَضْلَلْنَ وَرَبَّ الرِّيَاحِ وَمَاذَرَيْنَا أَسْأَلَكَ خَيْرَ هَذِهِ الْقَرْيَةِ وَخَيْرَ أَهْلِهَا وَخَيْرَ مَافِيْهَا وَأَعُوْذُ بِكَ مِنْ شَرِّهَا وَشَرِّ أَهْلِهَا وَشَرِّ مَا فِيهَا", translation: "Ya Allah Tuhan tujuh lapis langit dan segala yang berada dalam naungan-Nya, Tuhan bumi serta apa yang ada diatasnya, Tuhan dari segala setan dan apa saja yang disesatkan oleh mereka, Tuhan dari angin dan segala yang dihembuskan. Aku memohon kepada-Mu kebaikan perkampungan ini dan kebaikan para penghuninya... dan aku berlindung dari keburukannya." },
+        { id: 31, title: "Do'a Ketika Masuk Pasar", arabic: "لَا إِلٰهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيْكَ لَهُ، لَهُ المُلْكُ وَلَهُ الحَمْدُ يُحْيِ وَيُمِيْتُ وَهُوَ حَيٌّ لَايَمُوْتُ بِيَدِهِ الْخَيْرُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ", translation: "Tiada tuhan selain Allah Subhanahu Wa Ta'ala tiada sekutu bagi-Nya. Milik-Nya kerajaan dan bagi-Nya pujian, Dia menghidupkan dan mematikan, Dia Maha Hidup tak pernah mati, ditangan-Nya lah segala kebaikan, Maha Kuasa atas segala sesuatu." },
+        { id: 32, title: "Do'a Menyembelih", arabic: "بِسْمِ اللهِ اللهُ أَكْبَرُ", translation: "Dengan menyebut nama Allah Subhanahu Wa Ta'ala yang maha besar." },
+        { id: 33, title: "Do'a ketika pergi ke Masjid", arabic: "اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا  وَفِي لِسَانِ نُوْرًا وَفِي بَصَرِي نُورًا وَفِي سَمْعِي نُورًا . وَعَنْ يَمِينِي نُورًا وَعَنْ يَسَارِى نُورًا وَفَوْقِى نُورًا وَتَحْتِي نُورًا وَأَمَامِي نُورًا وَخَلْفِي نُورًا وَاجْعَلْ لِي نُورًا", translation: "Ya Allah, jadikanlah di hatiku cahaya, pada lisanku cahaya, pandanganku cahaya, pendengaranku cahaya, dari kananku cahaya, kiriku cahaya, atasku cahaya, bawahku cahaya, depanku cahaya, belakangku cahaya, dan jadikanlah untukku cahaya." },
+        { id: 34, title: "Do'a Untuk Kedua Orang Tua", arabic: "اللهُمَّ اغْفِرْ لِي ذُنُوبِي وَلِوَالِدَيَّ وَارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا", translation: "Ya Allah Subhanahu Wa Ta'ala ampunilah dosa-dosaku dan dosa-dosa kedua orang tuaku dan sayangilah mereka seperti mereka menyayangiku pada waktu kecil." },
+        { id: 35, title: "Do'a Saat Berbuka Puasa", arabic: "ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الأَجْرُ إِنْشَاءَ اللهُ", translation: "Lepaslah dahagaku, urat-urat tubuh pun mulai terbasahi, dan pahala akan diperoleh insya Allah." },
+        { id: 36, title: "Do'a Untuk Orang Sakit", arabic: "اللهُمَّ رَبَّ النَّاسِ أَذْهِبِ البَأْسَ اشْفِ أَنْتَ الشَّافِي لَا شِفَاءَ إِلَّا شِفَاءُكَ شِفَاءً لَا يُغَادِرُ سَقَمًا", translation: "Ya Allah Tuhan semua manusia, hilangkan dan sembuhkanlah sakit ini. Tiada yang dapat menyembuhkan kecuali kesembuhan dari-Mu. Kesembuhan yang tidak meninggalkan bekas penyakit." },
+        { id: 37, title: "Do'a Ketika Lailatul Qadar", arabic: "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي", translation: "Wahai Tuhanku, sesungguhnya Engkau Maha Pengampun, Engkau suka mengampuni, maka ampunilah aku." },
+        { id: 38, title: "Do'a Setelah Sholat Tahajjud", arabic: "اللهُمَّ لَكَ الحَمْدُ أَنْتَ قَيِّمُ السَّمَوَاتِ وَالأَرْضِ ... لا إِلَهَ إِلَّا أَنْتَ", translation: "Ya Allah bagi-Mu segala puji, Engkau penegak langit dan bumi... Tiada tuhan selain Engkau." },
+        { id: 39, title: "Do'a setelah Sholat Dhuha", arabic: "اللَّهُمَّ إِنَّ الضُّحَاءَ ضُحَاءُكَ وَالْبَهَاءَ بَهَاءُكَ ... آتِنِي مَا آتَيْتَ عِبَادَكَ الصَّالِحِينَ.", translation: "Ya Allah, waktu Dhuha adalah waktu-Mu, keagungan milik-Mu, keindahan milik-Mu... datangkanlah padaku apa yang Engkau datangkan kepada hamba-hamba-Mu yang sholeh." },
+        { id: 40, title: "Do'a Shalat Istikharah", arabic: "اللهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ ... ثُمَّ أَرْضِنِي بِهِ", translation: "Ya Allah, aku memohon pilihan terbaik kepada-Mu dengan ilmu-Mu, dan aku mohon kekuatan dengan kekuasaan-Mu... maka tetapkanlah kebaikan untukku dan ridhoilah aku." },
+        { id: 41, title: "Do'a Agar Terhindar Dari Penyakit", arabic: "اللهُمَّ إِنِّي أَعُوذُبِكَ مِنَ البَرَصِ وَالجُنُونِ وَالْجُذَامِ وَمِنْ سَيِّءِ الْأَسْقَامِ", translation: "Aku berlindung kepada-Mu dari penyakit belang, gila, kusta dan segala penyakit buruk/mengerikan." },
+        { id: 42, title: "Do'a Ketika Takut", arabic: "لا إله إلا الله", translation: "Tidak ada Illah yang berhak diibadahi dengan benar selain Allah." },
+        { id: 43, title: "Do'a Agar Dicukupkan Rezeki", arabic: "اللهُمَّ اَكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَاَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ", translation: "Ya Allah cukupilah rezeki aku dengan rizki-Mu yang halal hingga aku terhindar dari yang haram. Kayakanlah aku dengan kenikmatan-Mu dan jangan butuh kepada selain-Mu." },
+        { id: 44, title: "Do'a Kesedihan Mendalam", arabic: "لَا إِلٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ", translation: "Tiada Tuhan selain Engkau, Maha Suci Engkau, sesungguhnya aku termasuk orang-orang yang zalim." },
+        { id: 45, title: "Do'a Saat Bercermin", arabic: "اللهُمَّ كَمَا حَسَّنْتَ خَلْقِي فَحَسِّنْ خُلُقِي", translation: "Segala puji bagi Allah, elokkanlah kiranya kelakuanku sebagaimana Engkau telah mengelokkan rupaku." },
+        { id: 46, title: "Do'a Mohon Pertolongan", arabic: "اللهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ", translation: "Ya Allah, tolonglah aku agar dapat berdzikir kepada-Mu, bersyukur kepada-Mu dan membaguskan ibadah kepada-Mu." },
+        { id: 47, title: "Do'a Naik Kendaraan Umum", arabic: "بِسْمِ اللهِ مَجْرَاهَا وَمُرْسَاهَا إِنَّ رَبِّي لَغَفُورٌ رَحِيمٌ", translation: "Dengan nama Allah yang menjalankan dan melabuhkan kendaraan ini. Sesungguhnya Tuhanku Maha Pengampun lagi Maha Penyayang." },
+        { id: 48, title: "Do'a Ketika Lupa", arabic: "سُبْحَانَ مَنْ لَا يَسْهُوْ وَلَا يَنَامُ", translation: "Maha suci Allah yang tidak lupa dan tidak tidur." },
+        { id: 49, title: "Do'a Di Pagi Hari", arabic: "اللهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ", translation: "Ya Allah, dengan rahmat dan pertolongan-Mu kami memasuki waktu pagi, petang, dengan-Mu kami hidup dan mati, dan kepada-Mu kebangkitan." },
+        { id: 50, title: "Do'a Memohon Cinta Allah", arabic: "اللهُمَّ إِنِّي اَسْأَلُكَ حُبَّكَ وَحُبَّ مَنْ يُحِبُّكَ وَحُبَّ عَمَلٍ يُقَرِّبُنِي إِلَى حُبِّكَ", translation: "Ya Allah, aku memohon cinta-Mu, cinta orang yang mencintai-Mu, dan cinta amal yang mengantarkanku kepada cinta-Mu." },
+        { id: 51, title: "Do'a Berlindung Dari Sifat Malas", arabic: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ وَالْجُبْنِ وَالْهَرَمِ وَالْبُخْلِ وَأَعُوذُبِكَ مِنْ عَذَابِ الْقَبْرِ", translation: "Ya Allah, aku berlindung dari kelemahan, rasa malas, takut, kejelekan di waktu tua, dan sifat kikir, serta siksa kubur." },
+        { id: 52, title: "Do'a Agar Hafalan Kuat", arabic: "اللَّهُمَّ اجْعَلْ نَفْسِي مُطْمَئِنَّةً تُؤْمِنُ بِلِقَائِكَ وَتَقْنَعُ بِعَطَاءِكَ وَتَرْضَى بِقَضَاءِكَ", translation: "Ya Allah, jadikanlah jiwaku tenang, mengimani perjumpaan dengan-Mu, merasa cukup dengan pemberian-Mu, dan ridha dengan ketentuan-Mu." },
+        { id: 53, title: "Do'a Kebaikan Dunia Akhirat", arabic: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَ فِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ", translation: "Wahai Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, serta peliharalah kami dari siksa api neraka." }
+    ];
+
+    // Render Doa
+    const container = document.getElementById('doaContainer');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const totalSpan = document.getElementById('totalCount');
+
+    function renderDoa(items) {
+        if (!items.length) {
+            container.innerHTML = `<div class="empty-message"><i class="fas fa-book-open"></i> <br/> Doa tidak ditemukan, coba kata kunci lain.</div>`;
+            totalSpan.innerText = '0';
+            return;
+        }
+        totalSpan.innerText = items.length;
+        container.innerHTML = items.map(doa => `
+            <div class="doa-card" data-id="${doa.id}">
+                <div class="card-header">
+                    <div class="doa-title">
+                        <span class="doa-number">#${doa.id}</span>
+                        <span>${doa.title}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="arabic-text">${doa.arabic}</div>
+                    <div class="translation">${doa.translation}</div>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-copy" data-id="${doa.id}" data-title="${doa.title}" data-arabic="${doa.arabic.replace(/"/g, '&quot;')}" data-translation="${doa.translation.replace(/"/g, '&quot;')}">
+                        <i class="far fa-copy"></i> Salin Doa
+                    </button>
+                </div>
+            </div>
+        `).join('');
+
+        // Attach copy event listeners
+        document.querySelectorAll('.btn-copy').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const title = btn.getAttribute('data-title');
+                const arabic = btn.getAttribute('data-arabic');
+                const translation = btn.getAttribute('data-translation');
+                const copyText = `${title}\n\n${arabic}\n\nArtinya: ${translation}`;
+                navigator.clipboard.writeText(copyText).then(() => {
+                    showToast(`📖 ${title} disalin`);
+                }).catch(() => {
+                    showToast("Gagal menyalin, coba manual");
+                });
+            });
+        });
+    }
+
+    function filterDoa() {
+        const keyword = searchInput.value.trim().toLowerCase();
+        if (keyword === "") {
+            renderDoa(doaList);
+            return;
+        }
+        const filtered = doaList.filter(doa => 
+            doa.title.toLowerCase().includes(keyword) ||
+            doa.arabic.toLowerCase().includes(keyword) ||
+            doa.translation.toLowerCase().includes(keyword)
+        );
+        renderDoa(filtered);
+    }
+
+    function showToast(msg) {
+        const toast = document.getElementById('toastMsg');
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2000);
+    }
+
+    searchBtn.addEventListener('click', filterDoa);
+    searchInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') filterDoa();
+        if (searchInput.value === "") filterDoa();
+    });
+
+    // Initial render
+    renderDoa(doaList);
+</script>
+</body>
+</html>
+```
